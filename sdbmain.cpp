@@ -4,6 +4,20 @@
 #include "Database.hpp"
 #include "Student.hpp"
 
+std::string question(){
+  int choise;
+  std::string c;
+  std::cout << "Where is your operative system?\n\t1.Linux or mac.\n\t2.Windows\n\t   >> ";
+  std::cin >> choise;
+  if(choise == 1){
+    c= "clear";
+  }else if(choise == 2){
+    c= "cls";
+  }
+  return c;
+}
+
+
 int start_up_menu(){
   int choice;
   std::cout<<"1. Display all students"<<std::endl;
@@ -20,13 +34,16 @@ int start_up_menu(){
 
 
 int main(){
+  std::string c;
+  c = question();
   Database_map db;
   int choice = 0;
+  system(c.c_str());
   while(choice != 7){
     choice = start_up_menu();
     switch(choice){
       case 1:{
-        system("cls");
+        system(c.c_str());
         std::cout<<"The following students are found in our database: "<<std::endl;
         db.display_all();
         std::cout<<"There are a total of "<<db.size()<<" students within our database"<<std::endl;
@@ -34,7 +51,7 @@ int main(){
         break;
       }
       case 2:{
-        system("cls");
+        system(c.c_str());
         std::string name;
         std::cout<<"Please enter the students name: ";
         std::cin.get();
@@ -45,7 +62,7 @@ int main(){
         break;
       }
       case 3:{
-        system("cls");
+        system(c.c_str());
         std::string name;
         std::cout<<"Please enter the students name which you want to delete: ";
         std::cin.get();
@@ -54,6 +71,7 @@ int main(){
         break;
       }
       case 4:{
+        system(c.c_str());
         std::string answer;
         std::cout<<"Are you sure you wish to delete all the students from the database? ";
         std::cin>>answer;
@@ -64,10 +82,11 @@ int main(){
         break;
       }
       case 5:{
+        system(c.c_str());
         std::cout<<"THIS IS MISSING"<<std::endl;
       }
       case 6:{
-        system("cls");
+        system(c.c_str());
         std::string name;
         std::cout<<"Please enter the students name: ";
         std::cin.get();
@@ -77,6 +96,7 @@ int main(){
         break;
       }
       case 7:{
+        system(c.c_str());
         std::cout<<"Thank you for using our database!"<<std::endl;
         break;
       }
