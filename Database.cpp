@@ -101,6 +101,7 @@ void Database_map::display_all(){
 void Database_map::display_student(std:: string name){
   int id= index(name);
   if(id == -1){
+    system("color 0c");
     std::cout<<"This student is not in our database!"<<std::endl;
   }
   else{
@@ -112,6 +113,7 @@ void Database_map::display_student(std:: string name){
     std::cout<<'\t'<<"3. Science average: "<<(array[id].value).average_sci()<<std::endl;
     std::cout<<'\t'<<"4. Spanish average: "<<(array[id].value).average_spa()<<std::endl;
     std::cout<<'\t'<<"5. Mathematics average: "<<(array[id].value).average_math()<<std::endl;
+    std::cout <<'\n'<<"TOTAL AVERAGE: "<<(array[id].value).average_final()<<std::endl;
   }
 }
 void Database_map::disp_math(std:: string name){

@@ -16,9 +16,9 @@ private:
   int capacity;
   int count;
   void expand_capacity();
-  bool is_in(std::string name);
   int index(std::string name);
 public:
+  bool is_in(std::string name);
   Database_map();
   ~Database_map();
   void insert_student(std::string name);
