@@ -67,14 +67,21 @@ else {
 }
 
 }
-else
-  throw std::runtime_error("THE STUDENT IS ALREADY IN THE DATABASE \n");
+else{
+system("color 0c");
+   std::cout<<"THE STUDENT IS ALREADY IN THE DATABASE \n";
+   system("pause");
+   system("color 0f");
 
-}
+}}
 
 void Database_map::delete_student(std::string name){
-  if(!is_in(name))
-    throw std::runtime_error("ATTEMPTING TO REMOVE A STUDENT THAT DOESNT EXISTS \n");
+  if(!is_in(name)){
+    system("color 0c");
+    std::cout<< "ATTEMPTING TO REMOVE A STUDENT THAT DOESN'T EXISTS \n";
+    system("pause");
+    system("color 0f");
+  }
   else{
     int ind=index(name);
     if(ind == count-1)
