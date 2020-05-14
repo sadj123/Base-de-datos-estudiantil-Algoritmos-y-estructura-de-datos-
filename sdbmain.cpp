@@ -78,7 +78,7 @@ void login(std::string c){
     std::cout << "                           LOGIN OF USER";
     std::cout << "\n=====================================================================\n\n";
     std::cout << "\t\t User: ";
-    getline(std::cin, user);
+    std::cin>>user;
     std::cout << "\t\t Password: ";
     char caracter;
     caracter = getch();
@@ -96,19 +96,27 @@ void login(std::string c){
     }
 
     if(user == NICK && password == PASS){
+      system("color 0a");
       std::cout << "\n\n=====================================================================\n";
       std::cout << "                         WELCOME TEACHER";
       std::cout << "\n=====================================================================\n";
       login = true;
+
     }else{
+      system("color 0c");
+      password.erase(0, password.length());
       std::cout << "\n=====================================================================\n";
-      std::cout << "                  USER AND/OR PASSWORD ARE INCORRECTS";
+      std::cout << "                  USER AND/OR PASSWORD INCORRECT";
       std::cout << "\n=====================================================================\n";
       count ++;
+
     }
     std::cin.get();
+    std::cout<<"PRESS ENTER TO CONTINUE";
+    while(getchar()!='\n'){}
     system(c.c_str());
   }
+  system("color 0f");
   if(login == false){
     exit(0);
   }
@@ -192,7 +200,7 @@ int main(){
   std::string c;
   c = question();
   system(c.c_str());
-//  login(c);
+  login(c);
   Database_map db;
   int choice = 0;
   system(c.c_str());
@@ -219,18 +227,32 @@ int main(){
         std::cout<<"Please enter the student's name: ";
         std::cin.get();
         getline(std::cin,name);
+        std::for_each(name.begin(), name.end(), [](char &c){
+          c=::tolower(c);
+        });
         while(name[0]== ' '){
           name.erase(0, 1);
         }
         name[0]= toupper(name[0]);
+        if(!db.is_in(name)){
         db.insert_student(name);
+        system("color 0a");
         std::cout<<"The student has successfully been entered to the database!"<<std::endl;
         std::cout<<std::endl;
         std::cout<<"PRESS ENTER TO CONTINUE"<<std::endl;
         std::cout<<std::endl;
         std::cin.get();
+        system("color 0f");
         break;
       }
+      else {
+        std::cout<<'\n';
+        system("color 0c");
+        std::cout<<"THE STUDENT IS ALREADY REGISTERED!"<<'\n';
+        system("pause");
+        system("color 0f");
+        break;
+      }}
       case 3:{
         system(c.c_str());
         std::string name;
